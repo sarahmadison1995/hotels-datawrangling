@@ -98,9 +98,10 @@ Are there any surprising results?
 Your label should be short, informative, and shouldn't include spaces.
 It also shouldn't repeat a previous label, otherwise R Markdown will give you an error about repeated R chunk labels.
 
-```{r label-me-1}
-# add code here
-# pay attention to correctness and code style
+```{r frequency table of adults}
+hotels %>%
+  count(adults) %>%
+  arrange(desc(n))
 ```
 
 ### Exercise 6.
@@ -110,9 +111,11 @@ What does this reveal about the surprising results you spotted in the previous e
 
 **Note:** Don't forget to label your R chunk as well (where it says `label-me-2`).
 
-```{r label-me-2}
-# add code here
-# pay attention to correctness and code style
+```{r canceled bookings}
+hotels %>%
+  filter(is_canceled == 1)
+  count(adults) %>%
+  arrange(desc(n))
 ```
 
 ### Exercise 7.
