@@ -215,6 +215,17 @@ hotels %>%
     ## #   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,
     ## #   reserved_room_type <chr>, assigned_room_type <chr>, …
 
+``` r
+hotels %>%
+  count(hotel)
+```
+
+    ## # A tibble: 2 × 2
+    ##   hotel            n
+    ##   <chr>        <int>
+    ## 1 City Hotel   79330
+    ## 2 Resort Hotel 40060
+
 ### Exercise 5.
 
 Create a frequency table of the number of `adults` in a booking. Display
@@ -262,9 +273,29 @@ exercise?
 `label-me-2`).
 
 ``` r
-# add code here
-# pay attention to correctness and code style
+hotels %>%
+  filter(is_canceled == 1) %>%
+  count(adults) %>%
+  arrange(desc(n))
 ```
+
+    ## # A tibble: 14 × 2
+    ##    adults     n
+    ##     <dbl> <int>
+    ##  1      2 35258
+    ##  2      1  6674
+    ##  3      3  2151
+    ##  4      0   109
+    ##  5      4    16
+    ##  6     26     5
+    ##  7      5     2
+    ##  8     20     2
+    ##  9     27     2
+    ## 10      6     1
+    ## 11     10     1
+    ## 12     40     1
+    ## 13     50     1
+    ## 14     55     1
 
 ### Exercise 7.
 
@@ -273,9 +304,19 @@ grouped by `hotel` type so that you can get these statistics separately
 for resort and city hotels. Which type of hotel is higher, on average?
 
 ``` r
-# add code here
-# pay attention to correctness and code style
+hotels %>%
+  group_by(hotel) %>%
+  summarize(min_adr = min(adr),
+            mean_adr = mean(adr),
+            median_adr = median(adr),
+            max_adr = max(adr))
 ```
+
+    ## # A tibble: 2 × 5
+    ##   hotel        min_adr mean_adr median_adr max_adr
+    ##   <chr>          <dbl>    <dbl>      <dbl>   <dbl>
+    ## 1 City Hotel      0       105.        99.9    5400
+    ## 2 Resort Hotel   -6.38     95.0       75       508
 
 ### Exercise 8.
 
