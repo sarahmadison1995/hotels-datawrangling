@@ -146,9 +146,9 @@ You can investigate the data in the viewer to locate these values, but preferabl
 
 **Hint:** For example, you can `filter` for the given `adr` amounts and `select` the relevant columns.
 
-```{r label-me-4}
-# add code here
-# pay attention to correctness and code style
+```{r finding that value}
+hotels %>%
+  filter(adr == 5400 | adr == -6.38)
 ```
 
 ## Data dictionary
